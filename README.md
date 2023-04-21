@@ -141,6 +141,10 @@ You can also add any of the available flags in any order. Do you also want to ad
 bin\OpenPoseDemo.exe --video examples\media\video.avi --face --hand --write_json output_json_folder/
 ```
 
+:: Windows - Aim and shot demo 
+build\x64\Release\18_synchronous_custom_all_and_datum.exe 
+```
+
 After [installing](#installation) OpenPose, check [doc/README.md](doc/README.md) for a quick overview of all the alternatives and tutorials.
 
 
