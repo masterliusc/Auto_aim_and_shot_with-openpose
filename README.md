@@ -144,6 +144,7 @@ bin\OpenPoseDemo.exe --video examples\media\video.avi --face --hand --write_json
 :: Windows - Aim and shot demo 
 build\x64\Release\18_synchronous_custom_all_and_datum.exe 
 ```
+
 Use keybord 'l' to open the aim and shot function.
 
 After [installing](#installation) OpenPose, check [doc/README.md](doc/README.md) for a quick overview of all the alternatives and tutorials.
