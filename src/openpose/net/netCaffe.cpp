@@ -215,9 +215,10 @@ namespace op
         {
             #ifdef USE_CAFFE
                 // Sanity checks
+			    //std::cout << "batch size:" << inputData.getSize(0) << std::endl;
                 if (inputData.empty())
                     error("The Array inputData cannot be empty.", __LINE__, __FUNCTION__, __FILE__);
-                if (inputData.getNumberDimensions() != 4 || inputData.getSize(1) != 3)
+				if (inputData.getNumberDimensions() != 4 || inputData.getSize(1) != 3)
                     error("The Array inputData must have 4 dimensions: [batch size, 3 (RGB), height, width].",
                           __LINE__, __FUNCTION__, __FILE__);
                 // Reshape Caffe net if required

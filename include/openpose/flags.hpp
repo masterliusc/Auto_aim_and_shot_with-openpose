@@ -19,7 +19,7 @@
 DEFINE_int32(logging_level,             3,              "The logging level. Integer in the range [0, 255]. 0 will output any opLog() message,"
                                                         " while 255 will not output any. Current OpenPose library messages are in the range 0-4:"
                                                         " 1 for low priority messages and 4 for important ones.");
-DEFINE_bool(disable_multi_thread,       false,          "It would slightly reduce the frame rate in order to highly reduce the lag. Mainly useful"
+DEFINE_bool(disable_multi_thread,       true,          "It would slightly reduce the frame rate in order to highly reduce the lag. Mainly useful"
                                                         " for 1) Cases where it is needed a low latency (e.g., webcam in real-time scenarios with"
                                                         " low-range GPU devices); and 2) Debugging OpenPose when it is crashing to locate the"
                                                         " error.");
@@ -77,7 +77,7 @@ DEFINE_int32(keypoint_scale,            0,              "Scaling of the (x,y) co
                                                         " corner of the image, and (1,1) the bottom-right one; and 4 for range [-1,1], where"
                                                         " (-1,-1) would be the top-left corner of the image, and (1,1) the bottom-right one. Non"
                                                         " related with `scale_number` and `scale_gap`.");
-DEFINE_int32(number_people_max,         -1,             "This parameter will limit the maximum number of people detected, by keeping the people with"
+DEFINE_int32(number_people_max,         1,             "This parameter will limit the maximum number of people detected, by keeping the people with"
                                                         " top scores. The score is based in person area over the image, body part score, as well as"
                                                         " joint score (between each pair of connected body parts). Useful if you know the exact"
                                                         " number of people in the scene, so it can remove false positives (if all the people have"
@@ -96,13 +96,13 @@ DEFINE_int32(body,                      1,              "Select 0 to disable bod
 DEFINE_string(model_pose,               "BODY_25",      "Model to be used. E.g., `BODY_25` (fastest for CUDA version, most accurate, and includes"
                                                         " foot keypoints), `COCO` (18 keypoints), `MPI` (15 keypoints, least accurate model but"
                                                         " fastest on CPU), `MPI_4_layers` (15 keypoints, even faster but less accurate).");
-DEFINE_string(net_resolution,           "-1x368",       "Multiples of 16. If it is increased, the accuracy potentially increases. If it is"
+DEFINE_string(net_resolution,           "432x240",       "Multiples of 16. If it is increased, the accuracy potentially increases. If it is"
                                                         " decreased, the speed increases. For maximum speed-accuracy balance, it should keep the"
                                                         " closest aspect ratio possible to the images or videos to be processed. Using `-1` in"
                                                         " any of the dimensions, OP will choose the optimal aspect ratio depending on the user's"
                                                         " input value. E.g., the default `-1x368` is equivalent to `656x368` in 16:9 resolutions,"
                                                         " e.g., full HD (1980x1080) and HD (1280x720) resolutions.");
-DEFINE_double(net_resolution_dynamic,   1.,             "This flag only applies to images or custom inputs (not to video or webcam). If it is zero"
+DEFINE_double(net_resolution_dynamic,   0.,             "This flag only applies to images or custom inputs (not to video or webcam). If it is zero"
                                                         " or a negative value, it means that using `-1` in `net_resolution` will behave as explained"
                                                         " in its description. Otherwise, and to avoid out of memory errors, the `-1` in"
                                                         " `net_resolution` will clip to this value times the default 16/9 aspect ratio value (which"
@@ -192,12 +192,12 @@ DEFINE_bool(disable_blending,           false,          "If enabled, it will ren
                                                         " background, instead of being rendered into the original image. Related: `part_to_show`,"
                                                         " `alpha_pose`, and `alpha_pose`.");
 // OpenPose Rendering Pose
-DEFINE_double(render_threshold,         0.05,           "Only estimated keypoints whose score confidences are higher than this threshold will be"
+DEFINE_double(render_threshold,         0.5,           "Only estimated keypoints whose score confidences are higher than this threshold will be"
                                                         " rendered. Note: Rendered refers only to visual display in the OpenPose basic GUI, not in"
                                                         " the saved results. Generally, a high threshold (> 0.5) will only render very clear body"
                                                         " parts; while small thresholds (~0.1) will also output guessed and occluded keypoints,"
                                                         " but also more false positives (i.e., wrong detections).");
-DEFINE_int32(render_pose,               -1,             "Set to 0 for no rendering, 1 for CPU rendering (slightly faster), and 2 for GPU rendering"
+DEFINE_int32(render_pose,               1,             "Set to 0 for no rendering, 1 for CPU rendering (slightly faster), and 2 for GPU rendering"
                                                         " (slower but greater functionality, e.g., `alpha_X` flags). If -1, it will pick CPU if"
                                                         " CPU_ONLY is enabled, or GPU if CUDA is enabled. If rendering is enabled, it will render"
                                                         " both `outputData` and `cvOutputData` with the original image and desired body part to be"

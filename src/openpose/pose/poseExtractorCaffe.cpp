@@ -8,7 +8,7 @@
 #include <openpose/utilities/openCv.hpp>
 #include <openpose/utilities/standard.hpp>
 #include <openpose_private/utilities/openCvPrivate.hpp>
-
+#include <iostream>
 namespace op
 {
     const bool TOP_DOWN_REFINEMENT = false; // Note: +5% acc 1 scale, -2% max acc setting
@@ -405,7 +405,8 @@ namespace op
                             scaleNetToRoi = resizeGetScaleFactor(
                                 Point<int>{rectangleInt.width, rectangleInt.height}, targetSize);
                         }
-                        // No if scaleNetToRoi < 1 (image would be shrinked, so we assume best result already obtained)
+						std::cout << " scaleNetToRoi " << scaleNetToRoi << std::endl;
+						// No if scaleNetToRoi < 1 (image would be shrinked, so we assume best result already obtained)
                         if (scaleNetToRoi > 1)
                         {
                             const auto areaInput = inputNetData[0].getVolume(2,3);
