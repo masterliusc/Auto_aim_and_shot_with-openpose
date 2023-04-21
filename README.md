@@ -145,7 +145,7 @@ bin\OpenPoseDemo.exe --video examples\media\video.avi --face --hand --write_json
 build\x64\Release\18_synchronous_custom_all_and_datum.exe 
 ```
 
-Use keybord 'l' to open and stop the aim and shot function.This demo specificly work on FPS games with 1920x1080 resolution,with cuda and Nvdia gpus.just for tech use .Do not use for online games, only for technical purposes.
+Use keybord 'l' to open and stop the aim and shot function.This demo specificly work on FPS games with 1920x1080 resolution,with cuda and Nvidia gpus.just for tech use .Do not use for online games, only for technical purposes.
 
 After [installing](#installation) OpenPose, check [doc/README.md](doc/README.md) for a quick overview of all the alternatives and tutorials.
 
